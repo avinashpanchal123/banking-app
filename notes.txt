@@ -1,0 +1,16 @@
+Controllers as Instances:
+
+Ensure singleton behavior.
+Simplify route and middleware binding.
+Easier to mock and test.
+Services as Classes:
+
+Provide flexibility for instantiation with different dependencies.
+Support multiple configurations.
+Allow state management specific to the instance.
+
+
+Singleton behavior ensures a single, shared instance across the application.
+Useful for managing global or shared resources like logging, configurations, and route handling.
+Achieved in JavaScript by exporting an instance of a class and leveraging module caching.
+While powerful, overusing singletons can lead to tight coupling and reduced testability, so use them judiciously.

@@ -13,7 +13,7 @@ const getAllAccounts = async (req, res) => {
         
         res.status(200).json(account_list)
     } catch (err) {
-        console.error('Error fetching categories:', err);
+        console.error('Error fetching accounts:', err);
     }
 }
 
@@ -25,7 +25,7 @@ const addAccount = async (req, res) => {
         const newuser = await user.create({ firstName: firstName, lastName: lastName, email: email, contact_no: contact_no });
        
     } catch (err) {
-        console.error('Error adding user:', err);
+        console.error('Error adding account:', err);
     }
 };
 

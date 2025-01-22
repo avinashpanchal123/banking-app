@@ -1,0 +1,141 @@
+{
+    "routes":[
+       
+        {
+            "controller":"../components/bank/controller/bank.js",
+            "route":"/api/v1/bank",
+            "method":"post",
+            "action":"createBank",
+            "isAdmin":false,
+            "isClient":false,
+            "verifyClientId":false
+
+        },
+        {
+            "controller":"../components/bank/controller/bank.js",
+            "route":"/api/v1/bank",
+            "method":"get",
+            "action":"getAllBanks",
+            "isAdmin":false,
+            "isClient":false,
+            "verifyClientId":false
+
+        },
+        {
+            "controller":"../components/bank/controller/bank.js",
+            "route":"/api/v1/bank/:bankId",
+            "method":"get",
+            "action":"getBankById",
+            "isAdmin":false,
+            "isClient":false,
+            "verifyClientId":false
+
+        },
+        {
+            "controller":"../components/bank/controller/bank.js",
+            "route":"/api/v1/get-bank-abb/bank",
+            "method":"get",
+            "action":"getBankByAbb",
+            "isAdmin":false,
+            "isClient":false,
+            "verifyClientId":false
+        },
+        {
+            "controller":"../components/user/controller/user.js",
+            "route":"/api/v1/user/user",
+            "method":"post",
+            "action":"createUser",
+            "isAdmin":false,
+            "isClient":false,
+            "verifyClientId":false
+
+        },
+        {
+            "controller":"../components/user/controller/user.js",
+            "route":"/api/v1/user",
+            "method":"get",
+            "action":"getAllUsers",
+            "isAdmin":false,
+            "isClient":false,
+            "verifyClientId":false
+
+        },
+        {
+            "controller":"../components/user/controller/user.js",
+            "route":"/api/v1/user/:userId",
+            "method":"get",
+            "action":"getUserById",
+            "isAdmin":false,
+            "isClient":false,
+            "verifyClientId":false
+
+        },
+        {
+            "controller":"../components/user/controller/user.js",
+            "route":"/api/v1/user/get/:username",
+            "method":"get",
+            "action":"getUserByUsername",
+            "isAdmin":false,
+            "isClient":false,
+            "verifyClientId":false
+
+        },
+        {
+            "controller":"../components/account/controller/account.js",
+            "route":"/api/v1/account/user/:userId/bank/:bankId",
+            "method":"post",
+            "action":"createAccount",
+            "isAdmin":false,
+            "isClient":false,
+            "verifyClientId":false
+
+        },
+        {
+            "controller":"../components/account/controller/account.js",
+            "route":"/api/v1/user/:userId/account/:accountId",
+            "method":"get",
+            "action":"getAccountById",
+            "isAdmin":false,
+            "isClient":false,
+            "verifyClientId":false
+
+        },
+        {
+            "controller":"../components/account/controller/account.js",
+            "route":"/api/v1/deposit/user/:userId/account/:accountId",
+            "method":"post",
+            "action":"depositUserAccount",
+            "isAdmin":false,
+            "isClient":false,
+            "verifyClientId":false
+        },
+        {
+            "controller":"../components/account/controller/account.js",
+            "route":"/api/v1/balance/user/:userId/account/:accountId",
+            "method":"get",
+            "action":"getBalanceUserAccount",
+            "isAdmin":false,
+            "isClient":false,
+            "verifyClientId":false
+        },
+        {
+            "controller":"../components/account/controller/account.js",
+            "route":"/api/v1/acc-balance/account/:accountId",
+            "method":"get",
+            "action":"getBalance",
+            "isAdmin":false,
+            "isClient":false,
+            "verifyClientId":false
+        },
+        {
+            "controller":"../components/account/controller/account.js",
+            "route":"/api/v1/transfer-diff/user/:userId/account/:accountId",
+            "method":"post",
+            "action":"transferWithinDiffBankId",
+            "isAdmin":false,
+            "isClient":false,
+            "verifyClientId":false
+        }
+             
+    ]
+}

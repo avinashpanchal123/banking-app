@@ -7,31 +7,27 @@ const getAllUsers = async (req, res) => {
     try {
         console.log(">>>>>>>>>>>>",db.User);
         
-        let userList = await User.findAll({
-            where: {
-                user_id: 1
-            }
+        let UserList = await User.findAll({
+            
         })
         
-        res.status(200).json(userList)
+        res.status(200).json(UserList)
     } catch (err) {
-        console.error('Error fetching categories:', err);
+        console.error('Error fetching Users:', err);
     }
 }
 
 const addUser = async (req, res) => {
     try {
-        let { firstName, lastName, email, contact_no } = req.body;
+        let { firstName, lastName, email } = req.body;
        
 
-        const newuser = await user.create({ firstName: firstName, lastName: lastName, email: email, contact_no: contact_no });
+        const newUser = await User.create({ firstName, lastName, email});
         res.status(201).json({
-            id: newuser.id,
-            name : newuser.user_name,
-            type : newuser.user_type
+            newUser
         });
     } catch (err) {
-        console.error('Error adding user:', err);
+        console.error('Error adding User:', err);
     }
 };
 
@@ -47,12 +43,12 @@ const deleteUser = async(req, res)=>{
             }
         })
         if (!!deleted) {
-            res.status(200).json({ message: 'user deleted successfully' });
+            res.status(200).json({ message: 'User deleted successfully' });
         } else {
-            res.status(404).json({ message: 'user not found' });
+            res.status(404).json({ message: 'User not found' });
         }
     }catch(err){
-        console.error('Error deleting user:', err);
+        console.error('Error deleting User:', err);
     }
 }
 
