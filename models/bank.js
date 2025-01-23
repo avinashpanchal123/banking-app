@@ -14,8 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   bank.init({
-    name: DataTypes.STRING,
-    ifscCode: DataTypes.STRING
+    name: DataTypes.STRING(255),
+    ifscCode: DataTypes.STRING(11)
   }, {
     sequelize,
     modelName: 'bank',

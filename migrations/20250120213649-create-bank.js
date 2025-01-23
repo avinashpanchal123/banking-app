@@ -10,22 +10,34 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(255), 
+        allowNull: false, 
+        unique: true, 
       },
       ifscCode: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(11), 
+        allowNull: false, 
+        unique: true,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') 
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') 
       }
     });
+
+    // await queryInterface.addIndex('banks', ['ifscCode'], {
+    //   name: 'idx_banks_ifscCode',
+    //   unique: true
+    // });
   },
   async down(queryInterface, Sequelize) {
+    await queryInterface.removeIndex('banks', 'idx_banks_ifscCode');
     await queryInterface.dropTable('banks');
   }
 };

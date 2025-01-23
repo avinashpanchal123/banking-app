@@ -3,10 +3,20 @@ const app = express();
 const routeConfig = require("./app/routeConfig/route-config.js");
 const cors = require('cors');
 const cookieParser = require("cookie-parser");
+const db = require("./models/index.js")
 // app.use('/users', userRoutes);
 // app.use('/banks',bankController);
 // app.use('/accounts', accountController);
 
+
+async function authenticateDB(){
+    try {
+        await db.sequelize.authenticate();
+        console.log('Connection has been established successfully.');
+      } catch (error) {
+        console.error('Unable to connect to the database:', error);
+      }
+}
 
 function configureApp(app) {
     app.use(cors());
@@ -31,6 +41,7 @@ function configureRoutes(app) {
 
 function configureWorker(app) {
     configureApp(app);
+    authenticateDB();
     configureRoutes(app);
     // configureErrorHandler(app);
     startServer(app);

@@ -14,3 +14,10 @@ Singleton behavior ensures a single, shared instance across the application.
 Useful for managing global or shared resources like logging, configurations, and route handling.
 Achieved in JavaScript by exporting an instance of a class and leveraging module caching.
 While powerful, overusing singletons can lead to tight coupling and reduced testability, so use them judiciously.
+
+Cascading behavior in databases refers to how changes in one table (usually a parent table) 
+automatically affect related rows in another table (usually a child table) through foreign
+key constraints. 
+
+Cascading behavior is defined on the child table as part of the foreign key constraint because the child table 
+contains the foreign key that references the parent table's primary key.
