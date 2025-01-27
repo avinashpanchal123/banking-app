@@ -14,12 +14,22 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   bank.init({
-    name: DataTypes.STRING(255),
-    ifscCode: DataTypes.STRING(11)
+    
+    bank_name: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
+    },
+    abbreviation: {
+      type: DataTypes.STRING(11),
+      allowNull: true,
+    },
   }, {
     sequelize,
     modelName: 'bank',
-    underscored: true,
+    // underscored: true,
   });
   return bank;
 };

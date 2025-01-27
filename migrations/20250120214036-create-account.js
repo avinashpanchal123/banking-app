@@ -5,9 +5,9 @@ module.exports = {
     await queryInterface.createTable('accounts', {
       id: {
         allowNull: false,
-        autoIncrement: true,
+        // autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID
       },
       account_no: {
         type: Sequelize.UUID, 
@@ -16,7 +16,7 @@ module.exports = {
         allowNull: false
       },
       user_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
         allowNull: false,
         references: {
           model: 'users',
@@ -26,7 +26,7 @@ module.exports = {
         onUpdate: 'CASCADE'
       },
       bank_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
         allowNull: false,
         references: {
           model: 'banks',
@@ -35,10 +35,20 @@ module.exports = {
         onDelete: 'CASCADE', 
         onUpdate: 'CASCADE'
       },
+      bank_name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        references: {
+          model: 'banks',
+          key: 'bank_name'
+        },
+        onDelete: 'CASCADE', 
+        onUpdate: 'CASCADE'
+      },
       balance: {
         type: Sequelize.DECIMAL(10, 2), 
         allowNull: false,
-        defaultValue: 0.00 
+        defaultValue: 1000.00 
       },
       createdAt: {
         allowNull: false,

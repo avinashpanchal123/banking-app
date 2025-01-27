@@ -15,7 +15,7 @@ module.exports = {
         allowNull: false,
         unique: true
       },
-      from_ac: {
+      from_account: {
         type: Sequelize.UUID, 
         allowNull: false,
         references: {
@@ -25,7 +25,7 @@ module.exports = {
         onDelete: 'CASCADE', 
         onUpdate: 'CASCADE'
       },
-      to_ac: {
+      to_account: {
         type: Sequelize.UUID,
         allowNull: false,
         references: {
@@ -36,7 +36,7 @@ module.exports = {
         onUpdate: 'CASCADE'
       },
       from_bank: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
         allowNull: false,
         references: {
           model: 'banks', 
@@ -46,7 +46,7 @@ module.exports = {
         onUpdate: 'CASCADE'
       },
       to_bank: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
         allowNull: false,
         references: {
           model: 'banks',
@@ -59,10 +59,10 @@ module.exports = {
         type: Sequelize.DECIMAL(10, 2), 
         allowNull: false
       },
-      transaction_type: {
-        type: Sequelize.ENUM('debit', 'credit', 'transfer'), 
-        allowNull: false
-      },
+      // transaction_type: {
+      //   type: Sequelize.ENUM('debit', 'credit', 'deposit'), 
+      //   allowNull: false
+      // },
       status: {
         type: Sequelize.ENUM('pending', 'completed', 'failed'), 
         defaultValue: 'pending',

@@ -5,16 +5,15 @@ module.exports = {
     await queryInterface.createTable('banks', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID,
       },
-      name: {
+      bank_name: {
         type: Sequelize.STRING(255), 
         allowNull: false, 
         unique: true, 
       },
-      ifscCode: {
+      abbreviation: {
         type: Sequelize.STRING(11), 
         allowNull: false, 
         unique: true,
@@ -31,13 +30,13 @@ module.exports = {
       }
     });
 
-    // await queryInterface.addIndex('banks', ['ifscCode'], {
-    //   name: 'idx_banks_ifscCode',
+    // await queryInterface.addIndex('banks', ['abbreviation'], {
+    //   name: 'idx_banks_abbreviation',
     //   unique: true
     // });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.removeIndex('banks', 'idx_banks_ifscCode');
+   // await queryInterface.removeIndex('banks', 'idx_banks_abbreviation');
     await queryInterface.dropTable('banks');
   }
 };

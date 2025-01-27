@@ -6,8 +6,8 @@ class BankConfig {
   constructor() {
     this.fieldMapping = {
       id: "id",
-      name: "name",
-      ifscCode: "ifscCode",
+      bank_name: "bank_name",
+      abbreviation: "abbreviation",
       createdAt: "createdAt",
       updatedAt: "updatedAt",
       deletedAt: "deletedAt",
@@ -17,12 +17,11 @@ class BankConfig {
     this.tableName = db.bank.options.tableName;
     this.columnMapping = {
       id: this.model.rawAttributes[this.fieldMapping.id].field,
-      bankName: this.model.rawAttributes[this.fieldMapping.bankName].field,
+      bank_name: this.model.rawAttributes[this.fieldMapping.bank_name].field,
       abbreviation:
         this.model.rawAttributes[this.fieldMapping.abbreviation].field,
       createdAt: this.model.rawAttributes[this.fieldMapping.createdAt].field,
       updatedAt: this.model.rawAttributes[this.fieldMapping.updatedAt].field,
-      deletedAt: this.model.rawAttributes[this.fieldMapping.deletedAt].field,
     };
 
     this.association = {
@@ -30,26 +29,26 @@ class BankConfig {
     };
 
     this.filters = {
-      id: (val) => {
-        validateUUID(val);
-        return {
-          [`${this.columnMapping.id}`]: {
-            [Op.eq]: val,
-          },
-        };
-      },
+      // id: (val) => {
+      //   validateUUID(val);
+      //   return {
+      //     [`${this.columnMapping.id}`]: {
+      //       [Op.eq]: val,
+      //     },
+      //   };
+      // },
 
-      name: (val) => {
+      bank_name: (val) => {
         return {
-          [`${this.columnMapping.name}`]: {
+          [`${this.columnMapping.bank_name}`]: {
             [Op.like]: `%${val}%`,
           },
         };
       },
 
-      ifscCode: (val) => {
+      abbreviation: (val) => {
         return {
-          [`${this.columnMapping.ifscCode}`]: {
+          [`${this.columnMapping.abbreviation}`]: {
             [Op.eq]: val,
           },
         };

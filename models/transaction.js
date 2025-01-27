@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // Associations can be defined here
-            Transaction.belongsTo(models.account, { foreignKey: 'from_ac' });
-            Transaction.belongsTo(models.account, { foreignKey: 'to_ac' });
+            Transaction.belongsTo(models.account, { foreignKey: 'from_account' });
+            Transaction.belongsTo(models.account, { foreignKey: 'to_account' });
             Transaction.belongsTo(models.bank, { foreignKey: 'from_bank' });
             Transaction.belongsTo(models.bank, { foreignKey: 'to_bank' });
         }
@@ -23,14 +23,14 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
-                type: Sequelize.INTEGER
+                type: DataTypes.INTEGER
             },
             transaction_id: {
                 type: DataTypes.UUID,
                 defaultValue: DataTypes.UUIDV4,
                 allowNull: false,
             },
-            from_ac: {
+            from_account: {
                 type: DataTypes.UUID,
                 allowNull: false,
                 references: {
@@ -40,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
                 onDelete: 'CASCADE',
                 onUpdate: 'CASCADE',
             },
-            to_ac: {
+            to_account: {
                 type: DataTypes.UUID,
                 allowNull: false,
                 references: {
@@ -51,7 +51,7 @@ module.exports = (sequelize, DataTypes) => {
                 onUpdate: 'CASCADE',
             },
             from_bank: {
-                type: DataTypes.INTEGER,
+                type: DataTypes.UUID,
                 allowNull: false,
                 references: {
                     model: 'banks',
@@ -61,7 +61,7 @@ module.exports = (sequelize, DataTypes) => {
                 onUpdate: 'CASCADE',
             },
             to_bank: {
-                type: DataTypes.INTEGER,
+                type: DataTypes.UUID,
                 allowNull: false,
                 references: {
                     model: 'banks',
@@ -74,10 +74,10 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.DECIMAL(10, 2),
                 allowNull: false,
             },
-            transaction_type: {
-                type: DataTypes.ENUM('debit', 'credit'),
-                allowNull: false,
-            },
+            // transaction_type: {
+            //     type: DataTypes.ENUM('debit', 'credit'),
+            //     allowNull: false,
+            // },
             status: {
                 type: DataTypes.ENUM('pending', 'completed', 'failed'),
                 allowNull: false,

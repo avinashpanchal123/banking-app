@@ -1,4 +1,5 @@
 'use strict';
+const { types } = require('pg');
 const {
   Model
 } = require('sequelize');
@@ -18,11 +19,11 @@ module.exports = (sequelize, DataTypes) => {
   Account.init({
     account_no: {
       type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4, 
+      defaultValue: DataTypes.UUIDV4,
       allowNull: false,
     },
     user_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       allowNull: false,
       references: {
         model: 'user',
@@ -30,17 +31,23 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     bank_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       allowNull: false,
-      references: {
-        model: 'bank',
-        key: 'id' 
-      },
-    }
+
+    },
+    bank_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    balance: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false,
+      defaultValue: 0.00
+    },
   }, {
     sequelize,
     modelName: 'account',
-    underscored: true,
+    // underscored: true,
   });
   return Account;
 };
